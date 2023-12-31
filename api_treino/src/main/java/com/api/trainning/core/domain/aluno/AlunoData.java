@@ -1,4 +1,4 @@
-package com.api.trainning.core.domain.Aluno;
+package com.api.trainning.core.domain.aluno;
 
 public class AlunoData {
   private int idade;

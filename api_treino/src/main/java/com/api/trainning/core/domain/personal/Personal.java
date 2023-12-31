@@ -1,4 +1,4 @@
-package com.api.trainning.core.domain.Personal;
+package com.api.trainning.core.domain.personal;
 
 import java.util.List;
 import com.api.trainning.core.domain.UsuarioData;
