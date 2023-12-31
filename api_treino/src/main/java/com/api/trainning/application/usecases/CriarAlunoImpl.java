@@ -18,7 +18,7 @@ public class CriarAlunoImpl implements CriarAluno {
   public Aluno exec(UsuarioData usuario, AlunoData info) throws Exception {
     Aluno aluno = this.criarAlunoGateway.criar(usuario, info);
 
-    if (aluno == null)
+    if (aluno == null || aluno.usuario() == null)
       throw new Exception("Nao foi possivel criar o usuario");
 
     return aluno;

@@ -37,4 +37,18 @@ public class CriarPersonalImplTest {
     }
 
   }
+
+  @Test
+  public void gerarErroAoCriarPersonal() {
+    CriarPersonalGatewayTest criarPersonalGatewayTest = new CriarPersonalGatewayTest();
+    CriarPersonalImpl criarPersonalImpl = new CriarPersonalImpl(criarPersonalGatewayTest);
+
+    try {
+      criarPersonalImpl.exec(null, null);
+
+    } catch (Exception e) {
+      assertEquals("Nao foi possivel criar o usuario", e.getMessage());
+    }
+
+  }
 }

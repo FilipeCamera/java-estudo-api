@@ -19,7 +19,7 @@ public class CriarPersonalImpl implements CriarPersonal {
   public Personal exec(UsuarioData usuario, List<Treino> treinos) throws Exception {
     Personal personal = this.criarPersonalGateway.criar(usuario, treinos);
 
-    if (personal == null)
+    if (personal == null || personal.usuario() == null)
       throw new Exception("Nao foi possivel criar o usuario");
     // TODO Auto-generated method stub
     return personal;
