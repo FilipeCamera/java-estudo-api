@@ -16,13 +16,8 @@ public class CriarPersonalImplTest {
     CriarPersonalGatewayTest criarPersonalGatewayTest = new CriarPersonalGatewayTest();
     CriarPersonalImpl criarPersonalImpl = new CriarPersonalImpl(criarPersonalGatewayTest);
 
-    UsuarioData usuario = new UsuarioData();
+    UsuarioData usuario = new UsuarioData("teste", "personal", "teste@email.com", "teste");
     List<Treino> treinos = new ArrayList<Treino>();
-
-    usuario.setNome("teste");
-    usuario.setEmail("teste@email.com");
-    usuario.setSobrenome("personal");
-    usuario.setSenha("teste");
 
     try {
       Personal personal = criarPersonalImpl.exec(usuario, treinos);

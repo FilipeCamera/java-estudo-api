@@ -6,6 +6,17 @@ public class UsuarioData {
   private String email;
   private String senha;
 
+  public UsuarioData() {
+
+  }
+
+  public UsuarioData(String nome, String sobrenome, String email, String senha) {
+    this.nome = nome;
+    this.sobrenome = sobrenome;
+    this.email = email;
+    this.senha = senha;
+  }
+
   public String getNome() {
     return nome;
   }
