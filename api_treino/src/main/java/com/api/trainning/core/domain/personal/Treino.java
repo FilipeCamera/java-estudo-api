@@ -1,5 +1,8 @@
 package com.api.trainning.core.domain.personal;
 
-public record Treino(String nome, String instrucao, int repeticao, int serie, int carga) {
+import java.util.List;
+import com.api.trainning.core.domain.aluno.Aluno;
+
+public record Treino(List<Exercicio> exercicios, Aluno aluno) {
 
 }
