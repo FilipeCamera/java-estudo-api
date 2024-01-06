@@ -9,10 +9,6 @@ public class CriarPersonalGatewayTest implements CriarPersonalGateway {
 
   @Override
   public Personal criar(UsuarioData usuario, List<Treino> treinos) {
-
-    Personal personal = new Personal(usuario, treinos);
-
-    return personal;
+    return new Personal(usuario, treinos);
   }
-
 }

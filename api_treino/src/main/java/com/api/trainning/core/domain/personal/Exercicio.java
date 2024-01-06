@@ -7,6 +7,14 @@ public class Exercicio {
   private int serie;
   private int carga;
 
+  public Exercicio(String nome, String instrucao, int repeticao, int serie, int carga) {
+    this.nome = nome;
+    this.instrucao = instrucao;
+    this.repeticao = repeticao;
+    this.serie = serie;
+    this.carga = carga;
+  }
+
   public String getNome() {
     return nome;
   }

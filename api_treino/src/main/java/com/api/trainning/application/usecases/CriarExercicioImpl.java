@@ -3,6 +3,7 @@ package com.api.trainning.application.usecases;
 import com.api.trainning.application.gateway.CriarExercicioGateway;
 import com.api.trainning.core.domain.personal.Exercicio;
 import com.api.trainning.core.domain.usecases.CriarExercicio;
+import io.micrometer.common.util.StringUtils;
 
 public class CriarExercicioImpl implements CriarExercicio {
 
@@ -15,8 +16,12 @@ public class CriarExercicioImpl implements CriarExercicio {
   @Override
   public Exercicio exec(String nome, String instrucao, int repeticao, int serie, int carga)
       throws Exception {
-    Exercicio exercicio =
-        this.criarExercicioGateway.criar(nome, instrucao, repeticao, serie, carga);
+
+    Exercicio exercicio = null;
+
+    if (!StringUtils.isBlank(nome)) {
+      exercicio = this.criarExercicioGateway.criar(nome, instrucao, repeticao, serie, carga);
+    }
 
     if (exercicio == null)
       throw new Exception("Nao foi possivel criar o exercicio");

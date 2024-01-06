@@ -8,9 +8,6 @@ public class CriarAlunoGatewayTest implements CriarAlunoGateway {
 
   @Override
   public Aluno criar(UsuarioData usuario, AlunoData info) {
-    Aluno aluno = new Aluno(usuario, info);
-
-    return aluno;
+    return new Aluno(usuario, info);
   }
-
 }
