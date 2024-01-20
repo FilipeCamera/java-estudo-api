@@ -4,14 +4,15 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "alunos")
 public class AlunoEntity {
 
   @Column(name = "id", nullable = false)
@@ -39,10 +40,6 @@ public class AlunoEntity {
 
   @Column(nullable = false)
   private Double altura;
-
-  @OneToOne(mappedBy = "aluno", cascade = CascadeType.ALL)
-  @PrimaryKeyJoinColumn
-  private TreinoEntity treino;
 
   @CreationTimestamp
   @Column(nullable = false)
@@ -110,14 +107,6 @@ public class AlunoEntity {
 
   public void setAltura(Double altura) {
     this.altura = altura;
-  }
-
-  public TreinoEntity getTreino() {
-    return treino;
-  }
-
-  public void setTreino(TreinoEntity treino) {
-    this.treino = treino;
   }
 
   public LocalDateTime getCriadoEm() {

@@ -5,15 +5,21 @@ import java.util.List;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "exercicios")
 public class ExercicioEntity {
 
   @Column(name = "id", nullable = false)
@@ -36,14 +42,14 @@ public class ExercicioEntity {
   @Column(nullable = false)
   private int repeticao;
 
-  @ManyToMany
-  @JoinTable(name = "treinoExercicio", joinColumns = @JoinColumn(name = "treinoId"),
-      inverseJoinColumns = @JoinColumn(name = "exercicioId"))
+  @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+  @JoinTable(name = "treinoExercicio", joinColumns = @JoinColumn(name = "treino_id"),
+      inverseJoinColumns = @JoinColumn(name = "exercicio_id"))
   private List<TreinoEntity> treinos;
 
-  @OneToOne
-  @JoinColumn(name = "personalId")
-  private PersonalEntity personalExercicio;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "personal_id")
+  private PersonalEntity personal;
 
   @CreationTimestamp
   @Column(nullable = false)
@@ -105,12 +111,12 @@ public class ExercicioEntity {
     this.treinos = treinos;
   }
 
-  public PersonalEntity getPersonalExercicio() {
-    return personalExercicio;
+  public PersonalEntity getPersonal() {
+    return personal;
   }
 
-  public void setPersonalExercicio(PersonalEntity personalExercicio) {
-    this.personalExercicio = personalExercicio;
+  public void setPersonal(PersonalEntity personal) {
+    this.personal = personal;
   }
 
   public LocalDateTime getCriadoEm() {

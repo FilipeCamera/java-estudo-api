@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,7 +17,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "treinos")
 public class TreinoEntity {
 
   @Column(nullable = false)
@@ -22,16 +28,17 @@ public class TreinoEntity {
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
 
-  @ManyToMany(mappedBy = "treinos")
+  @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+      mappedBy = "treinos")
   private List<ExercicioEntity> exercicios;
 
-  @ManyToOne
-  @JoinColumn(name = "personalId", nullable = false)
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "personal_id", nullable = false)
   private PersonalEntity personal;
 
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
   @MapsId
-  @JoinColumn(name = "alunoId")
+  @JoinColumn(name = "aluno_id")
   private AlunoEntity aluno;
 
   @CreationTimestamp
