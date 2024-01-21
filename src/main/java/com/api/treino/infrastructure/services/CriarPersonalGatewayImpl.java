@@ -9,22 +9,19 @@ import com.api.treino.infrastructure.repositories.PersonalRepository;
 
 public class CriarPersonalGatewayImpl implements CriarPersonalGateway {
   private PersonalRepository personalRepository;
-  private PersonalMapper personalMapper;
 
-  public CriarPersonalGatewayImpl(PersonalRepository personalRepository,
-      PersonalMapper personalMapper) {
+  public CriarPersonalGatewayImpl(PersonalRepository personalRepository) {
     this.personalRepository = personalRepository;
-    this.personalMapper = personalMapper;
   }
 
   @Override
   public Personal criar(UsuarioData usuario) {
 
-    PersonalEntity personalEntity = this.personalMapper.toPersonalEntity(usuario);
+    PersonalEntity personalEntity = PersonalMapper.toPersonalEntity(usuario);
 
     PersonalEntity personalResponse = this.personalRepository.save(personalEntity);
 
-    return this.personalMapper.toPersonal(personalResponse);
+    return PersonalMapper.toPersonal(personalResponse);
   }
 
 }

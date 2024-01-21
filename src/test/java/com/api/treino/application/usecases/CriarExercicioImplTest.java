@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import com.api.treino.application.gateway.CriarExercicioGatewayTest;
+import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.personal.Exercicio;
+import com.api.treino.core.domain.personal.Personal;
 
 public class CriarExercicioImplTest {
 
@@ -13,8 +15,11 @@ public class CriarExercicioImplTest {
     CriarExercicioGatewayTest criarExercicioGateway = new CriarExercicioGatewayTest();
     CriarExercicioImpl criarExercicioImpl = new CriarExercicioImpl(criarExercicioGateway);
 
+    UsuarioData usuario = new UsuarioData();
+    Personal personal = new Personal(usuario);
+
     try {
-      Exercicio exercicio = criarExercicioImpl.exec("Supino Inclinado", null, 12, 3, 15);
+      Exercicio exercicio = criarExercicioImpl.exec("Supino Inclinado", null, personal, 12, 3, 15);
 
       assertEquals(exercicio.getNome(), "Supino Inclinado");
       assertTrue(exercicio.getCarga() == 15);
@@ -26,14 +31,27 @@ public class CriarExercicioImplTest {
   }
 
   @Test
+  public void erroAoCriarUmExercicioSemTreinador() {
+    CriarExercicioGatewayTest criarExercicioGateway = new CriarExercicioGatewayTest();
+    CriarExercicioImpl criarExercicioImpl = new CriarExercicioImpl(criarExercicioGateway);
+
+    try {
+      criarExercicioImpl.exec("Supino Inclinado", null, null, 12, 3, 15);
+
+    } catch (Exception e) {
+      assertEquals(e.getMessage(), "O exercicio precisa de um criador(treinador)");
+    }
+  }
+
+  @Test
   public void errorAoCriarUmExercicioSemDados() {
     CriarExercicioGatewayTest criarExercicioGateway = new CriarExercicioGatewayTest();
     CriarExercicioImpl criarExercicioImpl = new CriarExercicioImpl(criarExercicioGateway);
 
     try {
-      criarExercicioImpl.exec(null, null, 0, 0, 0);
+      criarExercicioImpl.exec(null, null, null, 0, 0, 0);
     } catch (Exception e) {
-      assertEquals(e.getMessage(), "Nao foi possivel criar o exercicio");
+      assertEquals(e.getMessage(), "O exericio precisa de um titulo");
     }
   }
 }

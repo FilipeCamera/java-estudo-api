@@ -8,7 +8,7 @@ import com.api.treino.infrastructure.entities.PersonalEntity;
 @Component
 public class PersonalMapper {
 
-  public PersonalEntity toPersonalEntity(UsuarioData usuario) {
+  public static PersonalEntity toPersonalEntity(UsuarioData usuario) {
     PersonalEntity personal = new PersonalEntity();
 
     personal.setNome(usuario.getNome());
@@ -19,9 +19,9 @@ public class PersonalMapper {
     return personal;
   }
 
-  public Personal toPersonal(PersonalEntity personalEntity) {
-    UsuarioData usuario = new UsuarioData(personalEntity.getNome(), personalEntity.getSobrenome(),
-        personalEntity.getEmail(), null);
+  public static Personal toPersonal(PersonalEntity personalEntity) {
+    UsuarioData usuario = new UsuarioData(personalEntity.getId(), personalEntity.getNome(),
+        personalEntity.getSobrenome(), personalEntity.getEmail(), personalEntity.getSenha());
 
     Personal personal = new Personal(usuario);
 

@@ -34,21 +34,21 @@ public class ExercicioEntity {
   private String instrucao;
 
   @Column(nullable = false)
-  private int carga;
+  private Integer carga;
 
   @Column(nullable = false)
-  private int serie;
+  private Integer serie;
 
   @Column(nullable = false)
-  private int repeticao;
+  private Integer repeticao;
 
   @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
   @JoinTable(name = "treinoExercicio", joinColumns = @JoinColumn(name = "treino_id"),
       inverseJoinColumns = @JoinColumn(name = "exercicio_id"))
   private List<TreinoEntity> treinos;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "personal_id")
+  @ManyToOne
+  @JoinColumn(name = "personal_id", referencedColumnName = "id")
   private PersonalEntity personal;
 
   @CreationTimestamp

@@ -22,9 +22,9 @@ public class CriarTreinoImplTest {
     Aluno aluno = new Aluno(
         new UsuarioData("teste_aluno", "teste_aluno@email.com", "teste_aluno", "teste_aluno"),
         new AlunoData(22, 1.69, 51.8));
-    Exercicio exercicio1 = new Exercicio("supino reto", null, 12, 3, 18);
-    Exercicio exercicio2 = new Exercicio("supino inclinado", null, 12, 3, 18);
-    Exercicio exercicio3 = new Exercicio("supino com halteres", null, 12, 3, 18);
+    Exercicio exercicio1 = new Exercicio("supino reto", null, null, 12, 3, 18);
+    Exercicio exercicio2 = new Exercicio("supino inclinado", null, null, 12, 3, 18);
+    Exercicio exercicio3 = new Exercicio("supino com halteres", null, null, 12, 3, 18);
 
     List<Exercicio> exercicios = new ArrayList<>();
 

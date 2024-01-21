@@ -1,14 +1,17 @@
 package com.api.treino.infrastructure.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -31,6 +34,9 @@ public class PersonalEntity {
 
   @Column(nullable = false)
   private String senha;
+
+  @OneToMany(mappedBy = "personal", cascade = CascadeType.ALL)
+  private List<ExercicioEntity> exercicios;
 
   @CreationTimestamp
   @Column(nullable = false)
@@ -91,5 +97,14 @@ public class PersonalEntity {
   public void setAtualizadoEm(LocalDateTime atualizadoEm) {
     this.atualizadoEm = atualizadoEm;
   }
+
+  public List<ExercicioEntity> getExercicios() {
+    return exercicios;
+  }
+
+  public void setExercicios(List<ExercicioEntity> exercicios) {
+    this.exercicios = exercicios;
+  }
+
 
 }
