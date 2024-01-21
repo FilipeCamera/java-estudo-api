@@ -9,7 +9,7 @@ import com.api.treino.infrastructure.entities.PersonalEntity;
 public class PersonalMapper {
 
   public static PersonalEntity toPersonalEntity(UsuarioData usuario) {
-    PersonalEntity personal = new PersonalEntity();
+    PersonalEntity personal = new PersonalEntity(usuario.getId());
 
     personal.setNome(usuario.getNome());
     personal.setSobrenome(usuario.getSobrenome());

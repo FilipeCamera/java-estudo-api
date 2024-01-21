@@ -1,12 +1,27 @@
 package com.api.treino.core.domain.personal;
 
+import java.util.UUID;
+
 public class Exercicio {
+
+  private UUID id;
   private String nome;
   private String instrucao;
   private Personal personal;
   private int repeticao;
   private int serie;
   private int carga;
+
+  public Exercicio(UUID id, String nome, String instrucao, Personal personal, int repeticao,
+      int serie, int carga) {
+    this.id = id;
+    this.nome = nome;
+    this.instrucao = instrucao;
+    this.personal = personal;
+    this.repeticao = repeticao;
+    this.serie = serie;
+    this.carga = carga;
+  }
 
   public Exercicio(String nome, String instrucao, Personal personal, int repeticao, int serie,
       int carga) {
@@ -16,6 +31,10 @@ public class Exercicio {
     this.repeticao = repeticao;
     this.serie = serie;
     this.carga = carga;
+  }
+
+  public UUID getId() {
+    return id;
   }
 
   public String getNome() {

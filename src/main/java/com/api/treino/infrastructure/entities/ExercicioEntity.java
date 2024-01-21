@@ -1,20 +1,15 @@
 package com.api.treino.infrastructure.entities;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -42,13 +37,7 @@ public class ExercicioEntity {
   @Column(nullable = false)
   private Integer repeticao;
 
-  @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-  @JoinTable(name = "treinoExercicio", joinColumns = @JoinColumn(name = "treino_id"),
-      inverseJoinColumns = @JoinColumn(name = "exercicio_id"))
-  private List<TreinoEntity> treinos;
-
-  @ManyToOne
-  @JoinColumn(name = "personal_id", referencedColumnName = "id")
+  @ManyToOne(cascade = CascadeType.MERGE)
   private PersonalEntity personal;
 
   @CreationTimestamp
@@ -101,14 +90,6 @@ public class ExercicioEntity {
 
   public void setRepeticao(int repeticao) {
     this.repeticao = repeticao;
-  }
-
-  public List<TreinoEntity> getTreinos() {
-    return treinos;
-  }
-
-  public void setTreinos(List<TreinoEntity> treinos) {
-    this.treinos = treinos;
   }
 
   public PersonalEntity getPersonal() {

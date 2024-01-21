@@ -1,7 +1,6 @@
 package com.api.treino.infrastructure.entities;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
@@ -27,10 +25,6 @@ public class TreinoEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
-
-  @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-      mappedBy = "treinos")
-  private List<ExercicioEntity> exercicios;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "personal_id", nullable = false)
@@ -51,14 +45,6 @@ public class TreinoEntity {
 
   public UUID getId() {
     return id;
-  }
-
-  public List<ExercicioEntity> getExercicios() {
-    return exercicios;
-  }
-
-  public void setExercicios(List<ExercicioEntity> exercicios) {
-    this.exercicios = exercicios;
   }
 
   public PersonalEntity getPersonal() {

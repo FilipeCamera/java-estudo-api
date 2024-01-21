@@ -42,6 +42,14 @@ public class PersonalController {
     return ResponseEntity.status(HttpStatus.OK).body(personals);
   }
 
+  @GetMapping("/{id}")
+  public ResponseEntity<Personal> retornarPersonal(@PathVariable("id") UUID personalId)
+      throws Exception {
+    Personal personal = this.buscarPersonal.buscar(personalId);
+
+    return ResponseEntity.status(HttpStatus.OK).body(personal);
+  }
+
   @PostMapping
   public ResponseEntity<Personal> criarPersonal(
       @RequestBody @Valid UsuarioDTORequest usuarioRequest) throws Exception {
@@ -64,5 +72,19 @@ public class PersonalController {
         exercicioRequest.getSerie(), exercicioRequest.getRepeticao());
 
     return ResponseEntity.status(HttpStatus.CREATED).body(exercicio);
+  }
+
+  @GetMapping("/{id}/exercicios")
+  public ResponseEntity<List<Exercicio>> listarExercicios(
+      @PathVariable(value = "id") UUID personalId) {
+
+    return ResponseEntity.status(HttpStatus.OK).body(null);
+  }
+
+  @GetMapping("/{id}/exercicios/{exercicio_id}")
+  public ResponseEntity<Exercicio> listarExercicio(@PathVariable(value = "id") UUID personalId,
+      @PathVariable(value = "exercicio_id") UUID exercicioId) {
+
+    return ResponseEntity.status(HttpStatus.OK).body(null);
   }
 }
