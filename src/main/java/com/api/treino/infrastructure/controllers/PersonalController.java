@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
+import com.api.treino.core.domain.usecases.BuscarExercicio;
 import com.api.treino.core.domain.usecases.BuscarPersonal;
 import com.api.treino.core.domain.usecases.CriarExercicio;
 import com.api.treino.core.domain.usecases.CriarPersonal;
@@ -27,12 +28,14 @@ public class PersonalController {
   private CriarPersonal criarPersonal;
   private BuscarPersonal buscarPersonal;
   private CriarExercicio criarExercicio;
+  private BuscarExercicio buscarExercicio;
 
   public PersonalController(CriarPersonal criarPersonal, BuscarPersonal buscarPersonal,
-      CriarExercicio criarExercicio) {
+      CriarExercicio criarExercicio, BuscarExercicio buscarExercicio) {
     this.criarPersonal = criarPersonal;
     this.criarExercicio = criarExercicio;
     this.buscarPersonal = buscarPersonal;
+    this.buscarExercicio = buscarExercicio;
   }
 
   @GetMapping
@@ -76,15 +79,23 @@ public class PersonalController {
 
   @GetMapping("/{id}/exercicios")
   public ResponseEntity<List<Exercicio>> listarExercicios(
-      @PathVariable(value = "id") UUID personalId) {
+      @PathVariable(value = "id") UUID personalId) throws Exception {
 
-    return ResponseEntity.status(HttpStatus.OK).body(null);
+    Personal personal = this.buscarPersonal.buscar(personalId);
+
+    List<Exercicio> exercicios = this.buscarExercicio.buscar(personal);
+
+    return ResponseEntity.status(HttpStatus.OK).body(exercicios);
   }
 
   @GetMapping("/{id}/exercicios/{exercicio_id}")
   public ResponseEntity<Exercicio> listarExercicio(@PathVariable(value = "id") UUID personalId,
-      @PathVariable(value = "exercicio_id") UUID exercicioId) {
+      @PathVariable(value = "exercicio_id") UUID exercicioId) throws Exception {
 
-    return ResponseEntity.status(HttpStatus.OK).body(null);
+    Personal personal = this.buscarPersonal.buscar(personalId);
+
+    Exercicio exercicio = this.buscarExercicio.buscar(personal, exercicioId);
+
+    return ResponseEntity.status(HttpStatus.OK).body(exercicio);
   }
 }

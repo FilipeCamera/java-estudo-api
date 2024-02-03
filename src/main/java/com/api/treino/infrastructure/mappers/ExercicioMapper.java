@@ -7,7 +7,7 @@ import com.api.treino.infrastructure.entities.ExercicioEntity;
 @Component
 public class ExercicioMapper {
 
-  public ExercicioEntity toExercicioEntity(Exercicio exercicio) {
+  public static ExercicioEntity toExercicioEntity(Exercicio exercicio) {
     ExercicioEntity exercicioEntity = new ExercicioEntity();
 
     exercicioEntity.setNome(exercicio.getNome());
@@ -20,7 +20,7 @@ public class ExercicioMapper {
     return exercicioEntity;
   }
 
-  public Exercicio toExercicio(ExercicioEntity exercicioEntity) {
+  public static Exercicio toExercicio(ExercicioEntity exercicioEntity) {
 
     Exercicio exercicio = new Exercicio(exercicioEntity.getId(), exercicioEntity.getNome(),
         exercicioEntity.getInstrucao(), PersonalMapper.toPersonal(exercicioEntity.getPersonal()),

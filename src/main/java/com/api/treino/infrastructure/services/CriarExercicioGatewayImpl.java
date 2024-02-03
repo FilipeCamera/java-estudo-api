@@ -10,12 +10,9 @@ import com.api.treino.infrastructure.repositories.ExercicioRepository;
 public class CriarExercicioGatewayImpl implements CriarExercicioGateway {
 
   private ExercicioRepository exercicioRepository;
-  private ExercicioMapper exercicioMapper;
 
-  public CriarExercicioGatewayImpl(ExercicioRepository exercicioRepository,
-      ExercicioMapper exercicioMapper) {
+  public CriarExercicioGatewayImpl(ExercicioRepository exercicioRepository) {
     this.exercicioRepository = exercicioRepository;
-    this.exercicioMapper = exercicioMapper;
   }
 
   @Override
@@ -24,11 +21,11 @@ public class CriarExercicioGatewayImpl implements CriarExercicioGateway {
 
     Exercicio exercicio = new Exercicio(nome, instrucao, personal, carga, serie, repeticao);
 
-    ExercicioEntity exercicioEntity = this.exercicioMapper.toExercicioEntity(exercicio);
+    ExercicioEntity exercicioEntity = ExercicioMapper.toExercicioEntity(exercicio);
 
     ExercicioEntity exercicioResponse = this.exercicioRepository.save(exercicioEntity);
 
-    return this.exercicioMapper.toExercicio(exercicioResponse);
+    return ExercicioMapper.toExercicio(exercicioResponse);
   }
 
 }

@@ -2,18 +2,21 @@ package com.api.treino.infrastructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import com.api.treino.application.gateway.BuscarExercicioGateway;
 import com.api.treino.application.gateway.BuscarPersonalGateway;
 import com.api.treino.application.gateway.CriarExercicioGateway;
 import com.api.treino.application.gateway.CriarPersonalGateway;
+import com.api.treino.application.usecases.BuscarExercicioImpl;
 import com.api.treino.application.usecases.BuscarPersonalImpl;
 import com.api.treino.application.usecases.CriarExercicioImpl;
 import com.api.treino.application.usecases.CriarPersonalImpl;
+import com.api.treino.core.domain.usecases.BuscarExercicio;
 import com.api.treino.core.domain.usecases.BuscarPersonal;
 import com.api.treino.core.domain.usecases.CriarExercicio;
 import com.api.treino.core.domain.usecases.CriarPersonal;
-import com.api.treino.infrastructure.mappers.ExercicioMapper;
 import com.api.treino.infrastructure.repositories.ExercicioRepository;
 import com.api.treino.infrastructure.repositories.PersonalRepository;
+import com.api.treino.infrastructure.services.BuscarExercicioGatewayImpl;
 import com.api.treino.infrastructure.services.BuscarPersonalGatewayImpl;
 import com.api.treino.infrastructure.services.CriarExercicioGatewayImpl;
 import com.api.treino.infrastructure.services.CriarPersonalGatewayImpl;
@@ -42,13 +45,22 @@ public class PersonalConfig {
   }
 
   @Bean
-  CriarExercicioGateway criarExercicioGateway(ExercicioRepository exercicioRepository,
-      ExercicioMapper exercicioMapper) {
-    return new CriarExercicioGatewayImpl(exercicioRepository, exercicioMapper);
+  CriarExercicioGateway criarExercicioGateway(ExercicioRepository exercicioRepository) {
+    return new CriarExercicioGatewayImpl(exercicioRepository);
   }
 
   @Bean
   CriarExercicio criarExercicio(CriarExercicioGateway criarExercicioGateway) {
     return new CriarExercicioImpl(criarExercicioGateway);
+  }
+
+  @Bean
+  BuscarExercicioGateway buscarExercicioGateway(ExercicioRepository exercicioRepository) {
+    return new BuscarExercicioGatewayImpl(exercicioRepository);
+  }
+
+  @Bean
+  BuscarExercicio buscarExercicio(BuscarExercicioGateway buscarExercicioGateway) {
+    return new BuscarExercicioImpl(buscarExercicioGateway);
   }
 }
