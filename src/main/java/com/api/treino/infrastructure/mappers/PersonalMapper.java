@@ -25,6 +25,17 @@ public class PersonalMapper {
 
     Personal personal = new Personal(usuario);
 
+
+    return personal;
+  }
+
+  public static Personal toPersonalExercicio(PersonalEntity personalEntity) {
+    UsuarioData usuario = new UsuarioData(personalEntity.getId(), personalEntity.getNome(),
+        personalEntity.getSobrenome(), personalEntity.getEmail(), null);
+
+    Personal personal = new Personal(usuario);
+
+
     return personal;
   }
 }

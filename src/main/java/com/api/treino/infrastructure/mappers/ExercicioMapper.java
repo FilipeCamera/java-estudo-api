@@ -23,7 +23,8 @@ public class ExercicioMapper {
   public static Exercicio toExercicio(ExercicioEntity exercicioEntity) {
 
     Exercicio exercicio = new Exercicio(exercicioEntity.getId(), exercicioEntity.getNome(),
-        exercicioEntity.getInstrucao(), PersonalMapper.toPersonal(exercicioEntity.getPersonal()),
+        exercicioEntity.getInstrucao(),
+        PersonalMapper.toPersonalExercicio(exercicioEntity.getPersonal()),
         exercicioEntity.getCarga(), exercicioEntity.getSerie(), exercicioEntity.getRepeticao());
 
     return exercicio;

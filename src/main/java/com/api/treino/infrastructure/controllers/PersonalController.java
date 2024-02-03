@@ -7,12 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
+import com.api.treino.core.domain.usecases.AlterarExercicio;
 import com.api.treino.core.domain.usecases.BuscarExercicio;
 import com.api.treino.core.domain.usecases.BuscarPersonal;
 import com.api.treino.core.domain.usecases.CriarExercicio;
@@ -29,13 +31,16 @@ public class PersonalController {
   private BuscarPersonal buscarPersonal;
   private CriarExercicio criarExercicio;
   private BuscarExercicio buscarExercicio;
+  private AlterarExercicio alterarExercicio;
 
   public PersonalController(CriarPersonal criarPersonal, BuscarPersonal buscarPersonal,
-      CriarExercicio criarExercicio, BuscarExercicio buscarExercicio) {
+      CriarExercicio criarExercicio, BuscarExercicio buscarExercicio,
+      AlterarExercicio alterarExercicio) {
     this.criarPersonal = criarPersonal;
     this.criarExercicio = criarExercicio;
     this.buscarPersonal = buscarPersonal;
     this.buscarExercicio = buscarExercicio;
+    this.alterarExercicio = alterarExercicio;
   }
 
   @GetMapping
@@ -97,5 +102,19 @@ public class PersonalController {
     Exercicio exercicio = this.buscarExercicio.buscar(personal, exercicioId);
 
     return ResponseEntity.status(HttpStatus.OK).body(exercicio);
+  }
+
+  @PutMapping("/{id}/exercicios/{exercicio_id}")
+  public ResponseEntity<Exercicio> alterarExercicio(@PathVariable(value = "id") UUID personalId,
+      @PathVariable(value = "exercicio_id") UUID exercicioId,
+      @RequestBody @Valid ExercicioDTORequest exercicioBody) throws Exception {
+
+    Personal personal = this.buscarPersonal.buscar(personalId);
+    Exercicio exercicio = this.buscarExercicio.buscar(personal, exercicioId);
+
+    Exercicio exercicioAlterado =
+        this.alterarExercicio.alterar(exercicio, exercicioBody.toExercicio());
+
+    return ResponseEntity.status(HttpStatus.OK).body(exercicioAlterado);
   }
 }
