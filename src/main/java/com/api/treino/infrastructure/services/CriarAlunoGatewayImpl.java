@@ -10,19 +10,17 @@ import com.api.treino.infrastructure.repositories.AlunoRepository;
 
 public class CriarAlunoGatewayImpl implements CriarAlunoGateway {
   private AlunoRepository alunoRepository;
-  private AlunoMapper alunoMapper;
 
   public CriarAlunoGatewayImpl(AlunoRepository alunoRepository, AlunoMapper alunoMapper) {
     this.alunoRepository = alunoRepository;
-    this.alunoMapper = alunoMapper;
   }
 
   @Override
   public Aluno criar(UsuarioData usuario, AlunoData info) {
 
-    AlunoEntity alunoEntity = this.alunoMapper.toAlunoEntity(usuario, info);
+    AlunoEntity alunoEntity = AlunoMapper.toAlunoEntity(usuario, info);
 
-    Aluno aluno = this.alunoMapper.toAluno(this.alunoRepository.save(alunoEntity));
+    Aluno aluno = AlunoMapper.toAluno(this.alunoRepository.save(alunoEntity));
 
     return aluno;
   }

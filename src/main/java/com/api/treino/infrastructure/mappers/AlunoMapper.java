@@ -9,7 +9,7 @@ import com.api.treino.infrastructure.entities.AlunoEntity;
 @Component
 public class AlunoMapper {
 
-  public AlunoEntity toAlunoEntity(UsuarioData usuario, AlunoData info) {
+  public static AlunoEntity toAlunoEntity(UsuarioData usuario, AlunoData info) {
     AlunoEntity aluno = new AlunoEntity();
 
     aluno.setNome(usuario.getNome());
@@ -23,7 +23,7 @@ public class AlunoMapper {
     return aluno;
   }
 
-  public Aluno toAluno(AlunoEntity alunoEntity) {
+  public static Aluno toAluno(AlunoEntity alunoEntity) {
     UsuarioData usuario = new UsuarioData(alunoEntity.getNome(), alunoEntity.getSobrenome(),
         alunoEntity.getEmail(), null);
     AlunoData info =
