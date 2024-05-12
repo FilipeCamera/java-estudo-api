@@ -16,7 +16,7 @@ public class BuscarPersonalImpl implements BuscarPersonal {
   }
 
   @Override
-  public Personal buscar(UUID id) throws NotFoundException {
+  public Personal buscar(UUID id) throws Exception {
 
     Personal personal = this.buscarPersonalGateway.buscar(id);
 
@@ -28,7 +28,7 @@ public class BuscarPersonalImpl implements BuscarPersonal {
   }
 
   @Override
-  public List<Personal> buscar() throws NotFoundException {
+  public List<Personal> buscar() throws Exception {
     // TODO Auto-generated method stub
     List<Personal> personals = this.buscarPersonalGateway.buscar();
 

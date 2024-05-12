@@ -3,27 +3,22 @@ package com.api.treino.infrastructure.controllers.dtos;
 import com.api.treino.core.domain.UsuarioData;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class UsuarioDTORequest {
 
-  @NotBlank
-  @NotEmpty
+  @NotBlank(message = "Nome nao pode esta em branco ou nulo")
   private String nome;
 
-  @NotBlank
-  @NotEmpty
+  @NotBlank(message = "Sobrenome nao pode esta em branco ou nulo")
   private String sobrenome;
 
-  @NotBlank
-  @NotEmpty
-  @Email
+  @NotBlank(message = "Email nao pode esta em branco ou nulo")
+  @Email(message = "Precisa ser um email valido")
   private String email;
 
-  @NotBlank
-  @NotEmpty
-  @Size(min = 8)
+  @NotBlank(message = "Senha nao pode esta em branco ou nulo")
+  @Size(min = 8, message = "Senha precisa ter pelo menos 8 caracteres")
   private String senha;
 
   public String getNome() {
