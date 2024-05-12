@@ -11,7 +11,7 @@ import com.api.treino.infrastructure.repositories.AlunoRepository;
 public class CriarAlunoGatewayImpl implements CriarAlunoGateway {
   private AlunoRepository alunoRepository;
 
-  public CriarAlunoGatewayImpl(AlunoRepository alunoRepository, AlunoMapper alunoMapper) {
+  public CriarAlunoGatewayImpl(AlunoRepository alunoRepository) {
     this.alunoRepository = alunoRepository;
   }
 

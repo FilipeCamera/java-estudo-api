@@ -13,7 +13,7 @@ public class BuscarAlunoGatewayImpl implements BuscarAlunoGateway {
 
   private AlunoRepository alunoRepository;
 
-  BuscarAlunoGatewayImpl(AlunoRepository alunoRepository) {
+  public BuscarAlunoGatewayImpl(AlunoRepository alunoRepository) {
     this.alunoRepository = alunoRepository;
   }
 

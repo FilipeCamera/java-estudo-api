@@ -10,7 +10,7 @@ public class BuscarAlunoImpl implements BuscarAluno {
 
   private BuscarAlunoGateway buscarAlunoGateway;
 
-  BuscarAlunoImpl(BuscarAlunoGateway buscarAlunoGateway) {
+  public BuscarAlunoImpl(BuscarAlunoGateway buscarAlunoGateway) {
     this.buscarAlunoGateway = buscarAlunoGateway;
   }
 
