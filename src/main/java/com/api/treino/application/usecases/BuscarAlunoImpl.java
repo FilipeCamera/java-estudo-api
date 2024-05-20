@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 import com.api.treino.application.gateway.BuscarAlunoGateway;
 import com.api.treino.core.domain.aluno.Aluno;
+import com.api.treino.core.domain.exceptions.NotFoundException;
 import com.api.treino.core.domain.usecases.BuscarAluno;
 
 public class BuscarAlunoImpl implements BuscarAluno {
@@ -19,7 +20,7 @@ public class BuscarAlunoImpl implements BuscarAluno {
     List<Aluno> alunos = this.buscarAlunoGateway.buscar();
 
     if (alunos.size() == 0) {
-      throw new Exception("Nenhum aluno encontrado");
+      throw new NotFoundException("Nenhum aluno encontrado");
     }
     return alunos;
   }
@@ -29,7 +30,7 @@ public class BuscarAlunoImpl implements BuscarAluno {
     Aluno aluno = this.buscarAlunoGateway.buscar(id);
 
     if (aluno == null) {
-      throw new Exception("Aluno nao encontrado");
+      throw new NotFoundException("Aluno nao encontrado");
     }
     return aluno;
   }
