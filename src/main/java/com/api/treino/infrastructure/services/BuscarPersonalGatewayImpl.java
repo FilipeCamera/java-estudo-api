@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import com.api.treino.application.gateway.BuscarPersonalGateway;
+import com.api.treino.application.gateway.IBuscarPersonalGateway;
 import com.api.treino.core.domain.personal.Personal;
 import com.api.treino.infrastructure.entities.PersonalEntity;
 import com.api.treino.infrastructure.mappers.PersonalMapper;
 import com.api.treino.infrastructure.repositories.PersonalRepository;
 
-public class BuscarPersonalGatewayImpl implements BuscarPersonalGateway {
+public class BuscarPersonalGatewayImpl implements IBuscarPersonalGateway {
 
   private PersonalRepository personalRepository;
 

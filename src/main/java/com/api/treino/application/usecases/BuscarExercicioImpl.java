@@ -2,7 +2,7 @@ package com.api.treino.application.usecases;
 
 import java.util.List;
 import java.util.UUID;
-import com.api.treino.application.gateway.BuscarExercicioGateway;
+import com.api.treino.application.gateway.IBuscarExercicioGateway;
 import com.api.treino.core.domain.exceptions.NotFoundException;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
@@ -10,9 +10,9 @@ import com.api.treino.core.domain.usecases.BuscarExercicio;
 
 public class BuscarExercicioImpl implements BuscarExercicio {
 
-  private BuscarExercicioGateway buscarExercicioGateway;
+  private IBuscarExercicioGateway buscarExercicioGateway;
 
-  public BuscarExercicioImpl(BuscarExercicioGateway buscarExercicioGateway) {
+  public BuscarExercicioImpl(IBuscarExercicioGateway buscarExercicioGateway) {
     this.buscarExercicioGateway = buscarExercicioGateway;
 
   }

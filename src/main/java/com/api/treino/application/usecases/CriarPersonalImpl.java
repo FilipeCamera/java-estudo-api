@@ -1,15 +1,15 @@
 package com.api.treino.application.usecases;
 
-import com.api.treino.application.gateway.CriarPersonalGateway;
+import com.api.treino.application.gateway.ICriarPersonalGateway;
 import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.personal.Personal;
 import com.api.treino.core.domain.usecases.CriarPersonal;
 
 public class CriarPersonalImpl implements CriarPersonal {
 
-  private final CriarPersonalGateway criarPersonalGateway;
+  private final ICriarPersonalGateway criarPersonalGateway;
 
-  public CriarPersonalImpl(CriarPersonalGateway criarPersonalGateway) {
+  public CriarPersonalImpl(ICriarPersonalGateway criarPersonalGateway) {
     this.criarPersonalGateway = criarPersonalGateway;
   }
 

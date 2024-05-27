@@ -5,6 +5,11 @@ import com.api.treino.core.domain.aluno.Aluno;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Treino;
 
-public interface CriarTreinoGateway {
-  Treino criar(List<Exercicio> exercicios, Aluno aluno);
+public class ICriarTreinoGatewayTest implements ICriarTreinoGateway {
+
+  @Override
+  public Treino criar(List<Exercicio> exercicios, Aluno aluno) {
+    return new Treino(exercicios, aluno);
+  }
+
 }

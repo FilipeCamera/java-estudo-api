@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import com.api.treino.application.gateway.BuscarExercicioGateway;
+import com.api.treino.application.gateway.IBuscarExercicioGateway;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
 import com.api.treino.infrastructure.entities.ExercicioEntity;
@@ -12,7 +12,7 @@ import com.api.treino.infrastructure.mappers.ExercicioMapper;
 import com.api.treino.infrastructure.mappers.PersonalMapper;
 import com.api.treino.infrastructure.repositories.ExercicioRepository;
 
-public class BuscarExercicioGatewayImpl implements BuscarExercicioGateway {
+public class BuscarExercicioGatewayImpl implements IBuscarExercicioGateway {
 
   private ExercicioRepository exercicioRepository;
 

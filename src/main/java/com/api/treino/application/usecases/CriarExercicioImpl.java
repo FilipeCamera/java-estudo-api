@@ -1,6 +1,6 @@
 package com.api.treino.application.usecases;
 
-import com.api.treino.application.gateway.CriarExercicioGateway;
+import com.api.treino.application.gateway.ICriarExercicioGateway;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
 import com.api.treino.core.domain.usecases.CriarExercicio;
@@ -8,9 +8,9 @@ import io.micrometer.common.util.StringUtils;
 
 public class CriarExercicioImpl implements CriarExercicio {
 
-  private final CriarExercicioGateway criarExercicioGateway;
+  private final ICriarExercicioGateway criarExercicioGateway;
 
-  public CriarExercicioImpl(CriarExercicioGateway criarExercicioGateway) {
+  public CriarExercicioImpl(ICriarExercicioGateway criarExercicioGateway) {
     this.criarExercicioGateway = criarExercicioGateway;
   }
 

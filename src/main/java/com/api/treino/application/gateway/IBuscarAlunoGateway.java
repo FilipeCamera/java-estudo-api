@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.UUID;
 import com.api.treino.core.domain.aluno.Aluno;
 
-public interface BuscarAlunoGateway {
+public interface IBuscarAlunoGateway {
   List<Aluno> buscar();
 
   Aluno buscar(UUID id);

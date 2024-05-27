@@ -1,14 +1,14 @@
 package com.api.treino.application.usecases;
 
-import com.api.treino.application.gateway.AlterarExercicioGateway;
+import com.api.treino.application.gateway.IAlterarExercicioGateway;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.usecases.AlterarExercicio;
 
 public class AlterarExercicioImpl implements AlterarExercicio {
 
-  private AlterarExercicioGateway alterarExercicioGateway;
+  private IAlterarExercicioGateway alterarExercicioGateway;
 
-  public AlterarExercicioImpl(AlterarExercicioGateway alterarExercicioGateway) {
+  public AlterarExercicioImpl(IAlterarExercicioGateway alterarExercicioGateway) {
     this.alterarExercicioGateway = alterarExercicioGateway;
   }
 

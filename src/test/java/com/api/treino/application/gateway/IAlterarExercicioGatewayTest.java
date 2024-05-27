@@ -8,14 +8,14 @@ import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
 
-public class AlterarExercicioGatewayTest implements AlterarExercicioGateway {
+public class IAlterarExercicioGatewayTest implements IAlterarExercicioGateway {
 
   public List<Exercicio> bd = new ArrayList<>();
 
   private Personal personal =
       new Personal(new UsuarioData("test", "test", "test@email.com", "test"));
 
-  public AlterarExercicioGatewayTest() {
+  public IAlterarExercicioGatewayTest() {
     Exercicio exercicio1 = new Exercicio(UUID.randomUUID(), "test", "test", personal, 4, 5, 6);
     Exercicio exercicio2 = new Exercicio(UUID.randomUUID(), "test", "test", personal, 4, 5, 6);
     Exercicio exercicio3 = new Exercicio(UUID.randomUUID(), "test", "test", personal, 4, 5, 6);

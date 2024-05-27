@@ -2,16 +2,16 @@ package com.api.treino.application.usecases;
 
 import java.util.List;
 import java.util.UUID;
-import com.api.treino.application.gateway.BuscarPersonalGateway;
+import com.api.treino.application.gateway.IBuscarPersonalGateway;
 import com.api.treino.core.domain.exceptions.NotFoundException;
 import com.api.treino.core.domain.personal.Personal;
 import com.api.treino.core.domain.usecases.BuscarPersonal;
 
 public class BuscarPersonalImpl implements BuscarPersonal {
 
-  private BuscarPersonalGateway buscarPersonalGateway;
+  private IBuscarPersonalGateway buscarPersonalGateway;
 
-  public BuscarPersonalImpl(BuscarPersonalGateway buscarPersonalGateway) {
+  public BuscarPersonalImpl(IBuscarPersonalGateway buscarPersonalGateway) {
     this.buscarPersonalGateway = buscarPersonalGateway;
   }
 

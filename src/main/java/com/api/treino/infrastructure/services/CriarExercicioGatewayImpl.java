@@ -1,13 +1,13 @@
 package com.api.treino.infrastructure.services;
 
-import com.api.treino.application.gateway.CriarExercicioGateway;
+import com.api.treino.application.gateway.ICriarExercicioGateway;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
 import com.api.treino.infrastructure.entities.ExercicioEntity;
 import com.api.treino.infrastructure.mappers.ExercicioMapper;
 import com.api.treino.infrastructure.repositories.ExercicioRepository;
 
-public class CriarExercicioGatewayImpl implements CriarExercicioGateway {
+public class CriarExercicioGatewayImpl implements ICriarExercicioGateway {
 
   private ExercicioRepository exercicioRepository;
 

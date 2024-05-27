@@ -1,13 +1,13 @@
 package com.api.treino.infrastructure.services;
 
 import java.util.Optional;
-import com.api.treino.application.gateway.AlterarExercicioGateway;
+import com.api.treino.application.gateway.IAlterarExercicioGateway;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.infrastructure.entities.ExercicioEntity;
 import com.api.treino.infrastructure.mappers.ExercicioMapper;
 import com.api.treino.infrastructure.repositories.ExercicioRepository;
 
-public class AlterarExercicioGatewayImpl implements AlterarExercicioGateway {
+public class AlterarExercicioGatewayImpl implements IAlterarExercicioGateway {
 
   private ExercicioRepository exercicioRepository;
 

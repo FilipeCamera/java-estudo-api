@@ -7,7 +7,7 @@ import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
 
-public class BuscarExercicioGatewayTest implements BuscarExercicioGateway {
+public class IBuscarExercicioGatewayTest implements IBuscarExercicioGateway {
 
   private List<Exercicio> bd = new ArrayList<>();
 
@@ -15,7 +15,7 @@ public class BuscarExercicioGatewayTest implements BuscarExercicioGateway {
   public Personal personal =
       new Personal(new UsuarioData("test", "test", "test@email.com", "test"));
 
-  public BuscarExercicioGatewayTest() {
+  public IBuscarExercicioGatewayTest() {
     Exercicio exercicio1 = new Exercicio(id, "test", "test", personal, 4, 5, 6);
     Exercicio exercicio2 = new Exercicio(UUID.randomUUID(), "test", "test", personal, 4, 5, 6);
     Exercicio exercicio3 = new Exercicio(UUID.randomUUID(), "test", "test", personal, 4, 5, 6);

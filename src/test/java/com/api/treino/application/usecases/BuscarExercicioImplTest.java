@@ -3,14 +3,14 @@ package com.api.treino.application.usecases;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import com.api.treino.application.gateway.BuscarExercicioGatewayTest;
+import com.api.treino.application.gateway.IBuscarExercicioGatewayTest;
 import com.api.treino.core.domain.personal.Exercicio;
 
 public class BuscarExercicioImplTest {
 
   @Test
   public void buscarExercicios() {
-    BuscarExercicioGatewayTest buscarExercicioGatewayTest = new BuscarExercicioGatewayTest();
+    IBuscarExercicioGatewayTest buscarExercicioGatewayTest = new IBuscarExercicioGatewayTest();
     BuscarExercicioImpl buscarExercicioImpl = new BuscarExercicioImpl(buscarExercicioGatewayTest);
 
     try {
@@ -24,7 +24,7 @@ public class BuscarExercicioImplTest {
 
   @Test
   public void buscarExercicioPorId() {
-    BuscarExercicioGatewayTest buscarExercicioGatewayTest = new BuscarExercicioGatewayTest();
+    IBuscarExercicioGatewayTest buscarExercicioGatewayTest = new IBuscarExercicioGatewayTest();
     BuscarExercicioImpl buscarExercicioImpl = new BuscarExercicioImpl(buscarExercicioGatewayTest);
 
     try {
@@ -40,7 +40,7 @@ public class BuscarExercicioImplTest {
 
   @Test
   public void erroAoBuscarExercicio() {
-    BuscarExercicioGatewayTest buscarExercicioGatewayTest = new BuscarExercicioGatewayTest();
+    IBuscarExercicioGatewayTest buscarExercicioGatewayTest = new IBuscarExercicioGatewayTest();
     BuscarExercicioImpl buscarExercicioImpl = new BuscarExercicioImpl(buscarExercicioGatewayTest);
 
     try {
@@ -53,7 +53,7 @@ public class BuscarExercicioImplTest {
 
   @Test
   public void erroAoBuscarExercicioPorId() {
-    BuscarExercicioGatewayTest buscarExercicioGatewayTest = new BuscarExercicioGatewayTest();
+    IBuscarExercicioGatewayTest buscarExercicioGatewayTest = new IBuscarExercicioGatewayTest();
     BuscarExercicioImpl buscarExercicioImpl = new BuscarExercicioImpl(buscarExercicioGatewayTest);
 
     try {

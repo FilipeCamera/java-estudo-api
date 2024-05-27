@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import com.api.treino.application.gateway.CriarTreinoGatewayTest;
+import com.api.treino.application.gateway.ICriarTreinoGatewayTest;
 import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.aluno.Aluno;
 import com.api.treino.core.domain.aluno.AlunoData;
@@ -16,7 +16,7 @@ public class CriarTreinoImplTest {
 
   @Test
   public void criarTreino() {
-    CriarTreinoGatewayTest criarTreinoGatewayTest = new CriarTreinoGatewayTest();
+    ICriarTreinoGatewayTest criarTreinoGatewayTest = new ICriarTreinoGatewayTest();
     CriarTreinoImpl criarTreinoImpl = new CriarTreinoImpl(criarTreinoGatewayTest);
 
     Aluno aluno = new Aluno(
@@ -45,7 +45,7 @@ public class CriarTreinoImplTest {
 
   @Test
   public void gerarErroAoCriarUmTreinoSemDados() {
-    CriarTreinoGatewayTest criarTreinoGatewayTest = new CriarTreinoGatewayTest();
+    ICriarTreinoGatewayTest criarTreinoGatewayTest = new ICriarTreinoGatewayTest();
     CriarTreinoImpl criarTreinoImpl = new CriarTreinoImpl(criarTreinoGatewayTest);
 
     try {

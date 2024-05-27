@@ -1,6 +1,6 @@
 package com.api.treino.application.usecases;
 
-import com.api.treino.application.gateway.CriarAlunoGateway;
+import com.api.treino.application.gateway.ICriarAlunoGateway;
 import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.aluno.Aluno;
 import com.api.treino.core.domain.aluno.AlunoData;
@@ -8,9 +8,9 @@ import com.api.treino.core.domain.usecases.CriarAluno;
 
 public class CriarAlunoImpl implements CriarAluno {
 
-  private final CriarAlunoGateway criarAlunoGateway;
+  private final ICriarAlunoGateway criarAlunoGateway;
 
-  public CriarAlunoImpl(CriarAlunoGateway criarAlunoGateway) {
+  public CriarAlunoImpl(ICriarAlunoGateway criarAlunoGateway) {
     this.criarAlunoGateway = criarAlunoGateway;
   }
 

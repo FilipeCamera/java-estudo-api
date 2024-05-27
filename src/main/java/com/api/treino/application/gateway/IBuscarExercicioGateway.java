@@ -5,7 +5,7 @@ import java.util.UUID;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
 
-public interface BuscarExercicioGateway {
+public interface IBuscarExercicioGateway {
   Exercicio buscar(Personal personal, UUID id);
 
   List<Exercicio> buscar(Personal personal);

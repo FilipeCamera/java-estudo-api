@@ -4,6 +4,6 @@ import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.aluno.Aluno;
 import com.api.treino.core.domain.aluno.AlunoData;
 
-public interface CriarAlunoGateway {
+public interface ICriarAlunoGateway {
 	  Aluno criar(UsuarioData usuario, AlunoData info);
 }

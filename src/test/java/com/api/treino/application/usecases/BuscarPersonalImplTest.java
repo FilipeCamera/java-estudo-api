@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
-import com.api.treino.application.gateway.BuscarPersonalGatewayTest;
+import com.api.treino.application.gateway.IBuscarPersonalGatewayTest;
 import com.api.treino.core.domain.personal.Personal;
 
 public class BuscarPersonalImplTest {
 
-  private BuscarPersonalGatewayTest buscarPersonalGatewayTest = new BuscarPersonalGatewayTest();
+  private IBuscarPersonalGatewayTest buscarPersonalGatewayTest = new IBuscarPersonalGatewayTest();
   private BuscarPersonalImpl buscarPersonalImpl = new BuscarPersonalImpl(buscarPersonalGatewayTest);
 
   @Test

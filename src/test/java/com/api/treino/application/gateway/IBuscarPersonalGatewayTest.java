@@ -6,13 +6,13 @@ import java.util.UUID;
 import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.personal.Personal;
 
-public class BuscarPersonalGatewayTest implements BuscarPersonalGateway {
+public class IBuscarPersonalGatewayTest implements IBuscarPersonalGateway {
 
   private List<Personal> bd = new ArrayList<>();
 
   public UUID id = UUID.randomUUID();
 
-  public BuscarPersonalGatewayTest() {
+  public IBuscarPersonalGatewayTest() {
     Personal personal1 = new Personal(new UsuarioData(id, "test", "1", "test", "test"));
     Personal personal2 =
         new Personal(new UsuarioData(UUID.randomUUID(), "test", "2", "test", "test"));

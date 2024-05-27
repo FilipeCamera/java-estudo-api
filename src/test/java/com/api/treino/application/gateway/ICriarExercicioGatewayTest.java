@@ -3,7 +3,7 @@ package com.api.treino.application.gateway;
 import com.api.treino.core.domain.personal.Exercicio;
 import com.api.treino.core.domain.personal.Personal;
 
-public class CriarExercicioGatewayTest implements CriarExercicioGateway {
+public class ICriarExercicioGatewayTest implements ICriarExercicioGateway {
 
   @Override
   public Exercicio criar(String nome, String instrucao, Personal personal, int repeticao, int serie,

@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import com.api.treino.application.gateway.UsuarioAutenticacaoGateway;
+import com.api.treino.application.gateway.IUsuarioAutenticacaoGateway;
 import com.api.treino.application.usecases.UsuarioAutenticacaoImpl;
 import com.api.treino.core.domain.usecases.UsuarioAutenticacao;
 import com.api.treino.infrastructure.services.UsuarioAutenticacaoGatewayImpl;
@@ -28,12 +28,12 @@ public class SecurityConfig {
   private RSAPrivateKey chavePrivada;
 
   @Bean
-  UsuarioAutenticacaoGateway usuarioAutenticacaoGateway() {
+  IUsuarioAutenticacaoGateway usuarioAutenticacaoGateway() {
     return new UsuarioAutenticacaoGatewayImpl();
   }
 
   @Bean
-  UsuarioAutenticacao usuarioAutenticacao(UsuarioAutenticacaoGateway usuarioAutenticacaoGateway) {
+  UsuarioAutenticacao usuarioAutenticacao(IUsuarioAutenticacaoGateway usuarioAutenticacaoGateway) {
     return new UsuarioAutenticacaoImpl(usuarioAutenticacaoGateway);
   }
 

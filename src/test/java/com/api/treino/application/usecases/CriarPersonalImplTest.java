@@ -2,7 +2,7 @@ package com.api.treino.application.usecases;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import com.api.treino.application.gateway.CriarPersonalGatewayTest;
+import com.api.treino.application.gateway.ICriarPersonalGatewayTest;
 import com.api.treino.core.domain.UsuarioData;
 import com.api.treino.core.domain.personal.Personal;
 
@@ -10,7 +10,7 @@ public class CriarPersonalImplTest {
 
   @Test
   public void CriarPersonal() {
-    CriarPersonalGatewayTest criarPersonalGatewayTest = new CriarPersonalGatewayTest();
+    ICriarPersonalGatewayTest criarPersonalGatewayTest = new ICriarPersonalGatewayTest();
     CriarPersonalImpl criarPersonalImpl = new CriarPersonalImpl(criarPersonalGatewayTest);
 
     UsuarioData usuario = new UsuarioData("teste", "personal", "teste@email.com", "teste");
@@ -31,7 +31,7 @@ public class CriarPersonalImplTest {
 
   @Test
   public void gerarErroAoCriarPersonal() {
-    CriarPersonalGatewayTest criarPersonalGatewayTest = new CriarPersonalGatewayTest();
+    ICriarPersonalGatewayTest criarPersonalGatewayTest = new ICriarPersonalGatewayTest();
     CriarPersonalImpl criarPersonalImpl = new CriarPersonalImpl(criarPersonalGatewayTest);
 
     try {
